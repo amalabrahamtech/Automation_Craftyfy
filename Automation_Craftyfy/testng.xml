@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Craftyfy Test Suite">
+    <test name="User Site Tests">
+        <packages>
+            <package name="testcases.adminWebsite"/>
+        </packages>
+    </test>
+
+    <test name="Admin Site Tests">
+        <packages>
+            <package name="testcases.userWebsite"/>
+        </packages>
+    </test>
+</suite>
