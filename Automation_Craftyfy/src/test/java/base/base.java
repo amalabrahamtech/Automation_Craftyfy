@@ -7,7 +7,9 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 
 
@@ -15,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 public class base {
 	
 	protected WebDriver driver;
-	String filePath = "..//Craftfy_auto001/src/test/resources/config.properties";
+	String filePath = "..//Automation_Craftyfy/src/test/resources/config.properties";
 	
 	//reading properties from config file
 	protected Properties prop;
@@ -32,7 +34,7 @@ public class base {
 		loadProperties();	
 		// user specific browser preference from config file
 		String browser = prop.getProperty("browser");
-//System.out.print("SetwebConfig");
+       //System.out.print("SetwebConfig");
         if (browser.equalsIgnoreCase("chrome")) {
               driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
