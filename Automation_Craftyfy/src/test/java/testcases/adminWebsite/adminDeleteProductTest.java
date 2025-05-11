@@ -28,7 +28,6 @@ public class adminDeleteProductTest extends base {
 	}
 	
 	
-  
 
    	@Test
 	public void TC_A5_07_DeleteItemsScreen() {

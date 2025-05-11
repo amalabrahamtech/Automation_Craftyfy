@@ -42,48 +42,56 @@ public class adminViewOrdersTest extends base{
     }
 
     @Test
-    public void verifyUserCanViewOrder() {
+    public void TC_A6_01_verifyUserCanViewOrder() {
+    	
+    	try {
         // Locate the order block div
         WebElement orderDiv = driver.findElement(By.cssSelector("div.grid.grid-cols-1"));
 
-        // ✅ Verify Product List is displayed
+        //  Verify Product List is displayed
         List<WebElement> productList = orderDiv.findElements(By.cssSelector("div > div > p.py-0\\.5"));
         Assert.assertTrue(productList.size() > 0, "Product list should not be empty");
 
-        // ✅ Verify Customer name is displayed
+        //  Verify Customer name is displayed
         WebElement customerName = orderDiv.findElement(By.cssSelector("p.font-medium"));
         Assert.assertTrue(customerName.isDisplayed(), "Customer name should be displayed");
 
-        // ✅ Verify Items count is displayed
+        //  Verify Items count is displayed
         WebElement itemsCount = orderDiv.findElement(By.xpath(".//p[contains(text(), 'Items')]"));
         Assert.assertTrue(itemsCount.isDisplayed(), "Items count should be displayed");
 
-        // ✅ Verify Payment method
+        //  Verify Payment method
         WebElement paymentMethod = orderDiv.findElement(By.xpath(".//p[contains(text(), 'Method')]"));
         Assert.assertTrue(paymentMethod.isDisplayed(), "Payment method should be displayed");
 
-        // ✅ Verify Payment status
+        //  Verify Payment status
         WebElement paymentStatus = orderDiv.findElement(By.xpath(".//p[contains(text(), 'Payment')]"));
         Assert.assertTrue(paymentStatus.isDisplayed(), "Payment status should be displayed");
 
-        // ✅ Verify Date
+        //  Verify Date
         WebElement dateElement = orderDiv.findElement(By.xpath(".//p[contains(text(), 'Date')]"));
         Assert.assertTrue(dateElement.isDisplayed(), "Date should be displayed");
 
-        // ✅ Verify Price
+        //  Verify Price
         WebElement priceElement = orderDiv.findElement(By.xpath(".//p[contains(text(), '$')]"));
         Assert.assertTrue(priceElement.isDisplayed(), "Price should be displayed");
 
-        // ✅ Verify Status Dropdown options
+        //  Verify Status Dropdown options
         WebElement statusDropdown = orderDiv.findElement(By.tagName("select"));
         List<WebElement> options = statusDropdown.findElements(By.tagName("option"));
         Assert.assertEquals(options.size(), 5, "Status dropdown should have 5 options");
 
-        // ✅ Optional: Verify specific option exists
+        //  Optional: Verify specific option exists
         boolean deliveredOptionExists = options.stream()
                 .anyMatch(opt -> opt.getText().equals("Delivered"));
         Assert.assertTrue(deliveredOptionExists, "Delivered option should be present");
-    }
+   
+    	 } catch (Exception e) {
+             e.printStackTrace();
+            Assert.fail("Exception occurred: " + e.getMessage());
+         }
+    	
+    	}
 
     @AfterMethod
     public void tearDown() {
